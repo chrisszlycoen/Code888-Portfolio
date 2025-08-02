@@ -48,8 +48,8 @@ const upload = multer({
 });
 
 // Create uploads directory if it doesn't exist
-const uploadsDir = path.join(__dirname, 'Uploads');
-if (!fs.existsSync(uploadsDir)) {
+const UploadsDir = path.join(__dirname, 'Uploads');
+if (!fs.existsSync(UploadsDir)) {
   fs.mkdirSync(UploadsDir);
 }
 
