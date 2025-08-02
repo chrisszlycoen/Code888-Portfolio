@@ -27,7 +27,7 @@ const AboutSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'https://code888-portfolio-backend.onrender.com';
+  const API_URL = 'https://code888-portfolio-backend.onrender.com';
 
   useEffect(() => {
     const fetchData = async () => {
