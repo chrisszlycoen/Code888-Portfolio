@@ -21,7 +21,7 @@ const DesignGallery = () => {
   const [error, setError] = useState<string | null>(null);
 
   const categories = ['All', 'Brand Identity', 'UI/UX Design', 'Web Design', 'Mobile Design'];
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_URL || 'https://code888-portfolio-backend.onrender.com';
 
   const isImageUrl = (image: string) => {
     return image.startsWith('/uploads/');

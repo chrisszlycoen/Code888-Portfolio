@@ -29,7 +29,7 @@ const ProjectsSection = () => {
     { id: 'design', label: 'Design', icon: Palette }
   ];
 
-  const API_URL = 'http://localhost:5000';
+  const API_URL = 'https://code888-portfolio-backend.onrender.com';
 
   const isImageUrl = (image: string) => {
     return image.startsWith('/uploads/');
