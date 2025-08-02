@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({ origin: 'https://code888-portfolio.onrender.com' }));
+app.use(cors({ origin: 'https://code888.onrender.com' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
