@@ -28,7 +28,7 @@ const FooterSection = () => {
               </a>
             </Button>
             <Button variant="outline" className="border-primary/30 text-foreground hover:bg-primary/10" asChild>
-              <a href="mailto:uhiriwe.code888@gmail.com">
+              <a href="mailto:uhiriwechrisostom0@gmail.com">
                 Hire Me
               </a>
             </Button>

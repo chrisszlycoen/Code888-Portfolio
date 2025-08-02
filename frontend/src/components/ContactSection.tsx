@@ -85,7 +85,7 @@ const ContactSection = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/uhiriwe-chrisostom",
+      href: "www.linkedin.com/in/code888",
       color: "hover:text-secondary"
     },
     {
