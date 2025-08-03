@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import multer from 'multer';
 import path from 'path';
-import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
+import { v2 as cloudinary } from 'cloudinary';
 
 // Load environment variables
 dotenv.config();
@@ -14,26 +14,25 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
 // Middleware
-app.use(cors({ origin: 'https://code888.onrender.com' }));
+app.use(cors({ 
+  origin: ['http://localhost:8080', 'https://code888.onrender.com', 'https://code888-ventures.vercel.app'],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from uploads directory
-app.use('/uploads', express.static(path.join(__dirname, 'Uploads')));
-
-// Configure multer for file uploads
-const storage = multer.diskStorage({
-  destination: (_req: Request, _file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
-    cb(null, 'uploads/');
-  },
-  filename: (_req: Request, file: Express.Multer.File, cb: (error: Error | null, filename: string) => void) => {
-    const uniqueSuffix = `${Date.now()}-${uuidv4()}${path.extname(file.originalname)}`;
-    cb(null, uniqueSuffix);
-  }
-});
+// Configure multer for memory storage
 const upload = multer({
-  storage,
+  storage: multer.memoryStorage(),
   fileFilter: (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     const filetypes = /jpeg|jpg|png/;
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -46,12 +45,6 @@ const upload = multer({
   },
   limits: { fileSize: 5 * 1024 * 1024 }
 });
-
-// Create uploads directory if it doesn't exist
-const UploadsDir = path.join(__dirname, 'Uploads');
-if (!fs.existsSync(UploadsDir)) {
-  fs.mkdirSync(UploadsDir);
-}
 
 // MongoDB connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio';
@@ -135,9 +128,6 @@ const Skill = mongoose.model('Skill', skillSchema);
 const Learning = mongoose.model('Learning', learningSchema);
 const SkillCategory = mongoose.model('SkillCategory', skillCategorySchema);
 const Highlight = mongoose.model('Highlight', highlightSchema);
-
-
-   
 
 // Generate a new ID for models
 const generateId = async (Model: any) => {
@@ -508,10 +498,23 @@ app.post('/projects', upload.single('image'), async (req: Request, res: Response
 
   try {
     const id = await generateId(Project);
+    // Upload to Cloudinary using Promise
+    const result = await new Promise<any>((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { resource_type: 'image', public_id: `portfolio/projects/${Date.now()}-${uuidv4()}` },
+        (error, result) => {
+          if (error) return reject(error);
+          if (!result) return reject(new Error('No result from Cloudinary'));
+          resolve(result);
+        }
+      );
+      stream.end(file.buffer);
+    });
+
     const newProject = new Project({
       id, title, description, technologies: techArray, category,
       demoUrl: demoUrl || null, githubUrl: githubUrl || null,
-      image: `/uploads/${file.filename}`, featured: featured === 'on' || featured === true
+      image: result.secure_url, featured: featured === 'on' || featured === true
     });
     await newProject.save();
     res.send(`<html><body><h1>Success</h1><p>Project "${title}" added successfully!</p><a href="/real/admin">Add Another Item</a> | <a href="/projects">View All Projects</a></body></html>`);
@@ -540,9 +543,22 @@ app.post('/designs', upload.single('image'), async (req: Request, res: Response)
 
   try {
     const id = await generateId(Design);
+    // Upload to Cloudinary using Promise
+    const result = await new Promise<any>((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { resource_type: 'image', public_id: `portfolio/designs/${Date.now()}-${uuidv4()}` },
+        (error, result) => {
+          if (error) return reject(error);
+          if (!result) return reject(new Error('No result from Cloudinary'));
+          resolve(result);
+        }
+      );
+      stream.end(file.buffer);
+    });
+
     const newDesign = new Design({
       id, title, description, tags: tagArray, category,
-      behanceUrl: behanceUrl || null, image: `/uploads/${file.filename}`
+      behanceUrl: behanceUrl || null, image: result.secure_url
     });
     await newDesign.save();
     res.send(`<html><body><h1>Success</h1><p>Design "${title}" added successfully!</p><a href="/real/admin">Add Another Item</a> | <a href="/designs">View All Designs</a></body></html>`);

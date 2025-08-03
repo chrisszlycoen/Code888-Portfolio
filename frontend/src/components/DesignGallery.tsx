@@ -21,10 +21,10 @@ const DesignGallery = () => {
   const [error, setError] = useState<string | null>(null);
 
   const categories = ['All', 'Brand Identity', 'UI/UX Design', 'Web Design', 'Mobile Design'];
-  const API_URL ='https://code888-portfolio-backend.onrender.com';
+  const API_URL = 'https://code888-portfolio-backend.onrender.com';
 
   const isImageUrl = (image: string) => {
-    return image.startsWith('/uploads/');
+    return image.startsWith('/uploads/') || image.startsWith('https://res.cloudinary.com/');
   };
 
   useEffect(() => {
@@ -103,7 +103,7 @@ const DesignGallery = () => {
                 <div className="relative h-48 bg-gradient-surface flex items-center justify-center text-6xl overflow-hidden">
                   {isImageUrl(design.image) ? (
                     <img
-                      src={`${API_URL}${design.image}`}
+                      src={design.image}
                       alt={design.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
@@ -130,7 +130,7 @@ const DesignGallery = () => {
                         <div className="space-y-6">
                           {isImageUrl(design.image) ? (
                             <img
-                              src={`${API_URL}${design.image}`}
+                              src={design.image}
                               alt={design.title}
                               className="w-full h-64 object-cover rounded"
                             />

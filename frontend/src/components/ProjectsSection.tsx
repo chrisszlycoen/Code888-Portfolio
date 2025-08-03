@@ -32,7 +32,7 @@ const ProjectsSection = () => {
   const API_URL = 'https://code888-portfolio-backend.onrender.com';
 
   const isImageUrl = (image: string) => {
-    return image.startsWith('/uploads/');
+    return image.startsWith('/uploads/') || image.startsWith('https://res.cloudinary.com/');
   };
 
   useEffect(() => {
@@ -120,7 +120,7 @@ const ProjectsSection = () => {
                 <div className="h-48 bg-gradient-surface flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   {isImageUrl(project.image) ? (
                     <img
-                      src={`${API_URL}${project.image}`}
+                      src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover"
                     />
