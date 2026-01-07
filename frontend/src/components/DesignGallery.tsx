@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { ExternalLink, Eye, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -71,11 +72,10 @@ const DesignGallery = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? 'bg-gradient-primary text-primary-foreground shadow-glow'
-                  : 'bg-surface hover:bg-surface-elevated text-muted-foreground hover:text-foreground'
-              }`}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${activeCategory === category
+                ? 'bg-gradient-primary text-primary-foreground shadow-glow'
+                : 'bg-surface hover:bg-surface-elevated text-muted-foreground hover:text-foreground'
+                }`}
             >
               {category}
             </button>
@@ -94,10 +94,13 @@ const DesignGallery = () => {
         {!loading && !error && (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredDesigns.map((design, index) => (
-              <div 
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
                 key={design.id}
-                className="floating-card group overflow-hidden animate-fade-in-up"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="floating-card group overflow-hidden"
               >
                 {/* Design Preview */}
                 <div className="relative h-48 bg-gradient-surface flex items-center justify-center text-6xl overflow-hidden">
@@ -105,21 +108,21 @@ const DesignGallery = () => {
                     <img
                       src={design.image}
                       alt={design.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
                     />
                   ) : (
-                    <span className="group-hover:scale-110 transition-transform duration-300">
+                    <span className="grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110">
                       {design.image}
                     </span>
                   )}
-                  
+
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-3">
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button 
-                          size="sm" 
-                          variant="outline" 
+                        <Button
+                          size="sm"
+                          variant="outline"
                           className="bg-background/90"
                           onClick={() => setSelectedDesign(design)}
                         >
@@ -142,7 +145,7 @@ const DesignGallery = () => {
                             <p className="text-muted-foreground mb-4">{design.description}</p>
                             <div className="flex flex-wrap gap-2">
                               {design.tags.map((tag, tagIndex) => (
-                                <span 
+                                <span
                                   key={tagIndex}
                                   className="px-2 py-1 bg-primary/10 text-primary rounded text-sm"
                                 >
@@ -154,7 +157,7 @@ const DesignGallery = () => {
                         </div>
                       </DialogContent>
                     </Dialog>
-                    
+
                     <Button size="sm" asChild>
                       <a href={design.behanceUrl || '#'} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4" />
@@ -173,14 +176,14 @@ const DesignGallery = () => {
                       {design.category}
                     </span>
                   </div>
-                  
+
                   <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
                     {design.description}
                   </p>
 
                   <div className="flex flex-wrap gap-1">
                     {design.tags.slice(0, 3).map((tag, tagIndex) => (
-                      <span 
+                      <span
                         key={tagIndex}
                         className="text-xs px-2 py-1 bg-primary/10 text-primary rounded"
                       >
@@ -189,7 +192,7 @@ const DesignGallery = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         )}

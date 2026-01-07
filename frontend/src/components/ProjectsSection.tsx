@@ -94,8 +94,8 @@ const ProjectsSection = () => {
               key={category.id}
               onClick={() => setActiveFilter(category.id)}
               className={`flex items-center space-x-2 px-5 py-2.5 rounded-none border transition-all duration-300 ${activeFilter === category.id
-                  ? 'bg-primary text-white border-primary'
-                  : 'bg-transparent text-muted-foreground border-white/10 hover:border-primary/50 hover:text-primary'
+                ? 'bg-primary text-white border-primary'
+                : 'bg-transparent text-muted-foreground border-white/10 hover:border-primary/50 hover:text-primary'
                 }`}
             >
               <category.icon className="h-4 w-4" />
@@ -133,7 +133,7 @@ const ProjectsSection = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className={`floating-card group relative bg-surface border border-white/10 overflow-hidden ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''
+                  className={`floating-card group relative bg-surface border border-border overflow-hidden ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''
                     }`}
                   whileHover={{
                     y: -5,
@@ -166,7 +166,7 @@ const ProjectsSection = () => {
                   </div>
 
                   <div className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors flex items-center justify-between">
+                    <h3 className="text-2xl font-bold text-muted-foreground mb-3 group-hover:text-foreground transition-colors flex items-center justify-between">
                       {project.title}
                       <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity transform -translate-x-2 group-hover:translate-x-0 text-primary" />
                     </h3>
@@ -208,7 +208,7 @@ const ProjectsSection = () => {
                         <Button
                           size="sm"
                           variant="outline"
-                          className="flex-1 rounded-none border-white/10 hover:bg-white/5 hover:text-white text-muted-foreground"
+                          className="flex-1 rounded-none border-border hover:bg-primary hover:text-primary-foreground text-muted-foreground"
                           asChild
                         >
                           <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">

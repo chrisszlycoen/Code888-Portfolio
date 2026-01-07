@@ -1,73 +1,77 @@
-# Welcome to your Lovable project
+# Code888 Portfolio ⚡
 
-## Project info
+> A modern, high-performance developer portfolio built with React & TypeScript.
 
-**URL**: https://lovable.dev/projects/2fa02ba4-dd9e-40c4-9efd-0ad1e0f2598b
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 
-## How can I edit this code?
+## Overview
 
-There are several ways of editing your application.
+A futuristic, dual-themed portfolio application designed to showcase software engineering skills, projects, and professional experience. Built with a focus on performance, accessibility, and visual aesthetics.
 
-**Use Lovable**
+This project demonstrates a mastery of modern frontend technologies, featuring a custom theming engine, complex animations, and a seamless user experience.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2fa02ba4-dd9e-40c4-9efd-0ad1e0f2598b) and start prompting.
+## Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Dual Theme System**:
+  - **Dark Mode**: "Deep Blue Minimalist" – A high-tech, immersive cybersecurity aesthetic using Deep Blue and Electric Blue.
+  - **Light Mode**: "Monochrome" – A strict Black & White design with **Balanced Dark Grey** accents for professional clarity.
+- **⚡ High Performance**: Powered by **Vite** for instant HMR and optimized production builds.
+- **Advanced UI/UX**:
+  - **Smooth Scrolling**: Implemented with **Lenis** for a luxurious, heavy inertia feel.
+  - **Animations**: Staggered scroll reveals and micro-interactions powered by **Framer Motion**.
+  - **Glassmorphism**: Modern frosted glass effects on cards and navigation.
+- **Fully Responsive**: Mobile-first architecture ensuring perfect rendering on devices of all sizes.
+- **Integrated Contact**: Fully functional contact form powered by **EmailJS**.
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Core**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, Shadcn UI, Lucide Icons
+- **Animations**: Framer Motion, Lenis Scroll
+- **State & Data**: TanStack Query
+- **Utilities**: EmailJS, Date-fns, Zod, React Hook Form
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm or yarn
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/code888/portfolio.git
+   cd portfolio
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:8080`.
+
+## Deployment
+
+To build the application for production:
+
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+This creates a `dist` folder with optimized assets ready for deployment to Vercel, Netlify, or any static host.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## License
 
-**Use GitHub Codespaces**
+This project is open source and available under the [MIT License](LICENSE).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2fa02ba4-dd9e-40c4-9efd-0ad1e0f2598b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+*Built with patience by UHIRIWE Chrisostom*

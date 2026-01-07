@@ -82,15 +82,15 @@ const AboutSection = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <p className="text-lg text-foreground/90 leading-relaxed">
-                  I'm a passionate technologist currently studying at <span className="text-primary font-semibold">Rwanda Coding Academy</span>, 
+                  I'm a passionate technologist currently studying at <span className="text-primary font-semibold">Rwanda Coding Academy</span>,
                   where I'm sharpening my skills in software development, cybersecurity, and emerging technologies.
                 </p>
                 <p className="text-lg text-foreground/90 leading-relaxed">
-                  My journey in tech is driven by a deep fascination with <span className="text-accent font-semibold">artificial intelligence</span> 
+                  My journey in tech is driven by a deep fascination with <span className="text-accent font-semibold">artificial intelligence</span>
                   and its potential to transform how we work and live.
                 </p>
                 <p className="text-lg text-foreground/90 leading-relaxed">
-                  As an aspiring <span className="text-secondary font-semibold">ethical hacker</span>, I'm committed to building 
+                  As an aspiring <span className="text-muted-foreground font-semibold">ethical hacker</span>, I'm committed to building
                   secure digital infrastructure for Africa's growing tech ecosystem.
                 </p>
                 <div className="flex items-center space-x-4 pt-4">
@@ -115,11 +115,11 @@ const AboutSection = () => {
                 {highlights.map((item) => {
                   const Icon = iconMap[item.icon];
                   return (
-                    <div 
+                    <div
                       key={item.id}
                       className="floating-card p-6 text-center group hover:scale-105 transition-transform duration-300"
                     >
-                      <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:animate-glow-pulse">
+                      <div className="w-12 h-12 bg-muted-foreground dark:bg-primary rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:animate-glow-pulse">
                         <Icon className="h-6 w-6 text-primary-foreground" />
                       </div>
                       <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>

@@ -16,7 +16,7 @@ const FooterSection = () => {
 
         {/* Brand Column */}
         <div className="md:col-span-2 space-y-6">
-          <div className="flex items-center space-x-2 text-2xl font-bold text-white tracking-tighter">
+          <div className="flex items-center space-x-2 text-2xl font-bold text-foreground tracking-tighter">
             <Terminal className="text-primary w-8 h-8" />
             <span>CODE<span className="text-primary">888</span></span>
           </div>
@@ -34,7 +34,7 @@ const FooterSection = () => {
               <a
                 key={idx}
                 href={social.href}
-                className="w-10 h-10 flex items-center justify-center rounded-none bg-background border border-white/10 text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+                className="w-10 h-10 flex items-center justify-center rounded-none bg-background border border-border text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
               >
                 <social.icon className="w-5 h-5" />
               </a>
@@ -44,7 +44,7 @@ const FooterSection = () => {
 
         {/* Quick Links */}
         <div>
-          <h4 className="text-lg font-bold text-white mb-6 font-mono">/EXPLORE</h4>
+          <h4 className="text-lg font-bold text-foreground mb-6 font-mono">/EXPLORE</h4>
           <ul className="space-y-4 text-muted-foreground">
             {['About', 'Projects', 'Experience', 'Contact'].map((item) => (
               <li key={item}>
@@ -59,7 +59,7 @@ const FooterSection = () => {
 
         {/* Status & Tech */}
         <div>
-          <h4 className="text-lg font-bold text-white mb-6 font-mono">/SYSTEM_STATUS</h4>
+          <h4 className="text-lg font-bold text-foreground mb-6 font-mono">/SYSTEM_STATUS</h4>
           <div className="space-y-4">
             <div className="flex items-center justify-between p-3 bg-background border border-white/5">
               <span className="text-muted-foreground text-sm">Status</span>

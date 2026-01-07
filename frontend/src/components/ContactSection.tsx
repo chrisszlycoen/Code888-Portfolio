@@ -10,7 +10,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    title: '', // Changed from subject to title to match template
+    subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,22 +27,22 @@ const ContactSection = () => {
 
     try {
       await emailjs.send(
-        'service_i40ogd2', // Gmail Service ID
+        'service_23tcnrh', // Gmail Service ID
         'template_k6mbj34', // Contact Us Template ID
         {
-          name: formData.name, // Matches {{name}}
-          email: formData.email, // Matches {{email}}
-          title: formData.title, // Matches {{title}}
-          message: formData.message // Matches {{message}}
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message
         },
-        'aXQqy2q7czbf31rwo' // Public Key
+        'hLztA9H0TAIxUQVsC' // Public Key
       );
 
       toast({
         title: "Message sent successfully!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
-      setFormData({ name: '', email: '', title: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       toast({
         title: "Error sending message",
@@ -86,13 +86,13 @@ const ContactSection = () => {
       icon: Linkedin,
       label: "LinkedIn",
       href: "www.linkedin.com/in/code888",
-      color: "hover:text-secondary"
+      color: "hover:text-primary"
     },
     {
       icon: Instagram,
       label: "Instagram",
       href: "https://instagram.com/u.h.i.r.i.w.e___",
-      color: "hover:text-accent"
+      color: "hover:text-primary"
     },
     {
       icon: Twitter,
@@ -118,7 +118,7 @@ const ContactSection = () => {
             {/* Contact Form */}
             <div className="floating-card p-8">
               <h3 className="text-2xl font-bold text-foreground mb-6">Send a Message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -154,15 +154,15 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
                     Subject
                   </label>
                   <Input
-                    id="title"
-                    name="title"
+                    id="subject"
+                    name="subject"
                     type="text"
                     required
-                    value={formData.title}
+                    value={formData.subject}
                     onChange={handleInputChange}
                     className="bg-surface border-border focus:border-primary"
                     placeholder="Project discussion, collaboration, etc."
@@ -185,8 +185,8 @@ const ContactSection = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={isSubmitting}
                   className="w-full tech-button"
                 >
@@ -207,7 +207,7 @@ const ContactSection = () => {
               {/* Contact Details */}
               <div className="floating-card p-8">
                 <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
-                
+
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <a
@@ -215,7 +215,7 @@ const ContactSection = () => {
                       href={info.href}
                       className="flex items-center space-x-4 p-3 rounded-lg hover:bg-surface-elevated transition-colors group"
                     >
-                      <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center group-hover:animate-glow-pulse">
+                      <div className="w-12 h-12 bg-muted-foreground dark:bg-primary rounded-lg flex items-center justify-center group-hover:animate-glow-pulse">
                         <info.icon className="h-6 w-6 text-primary-foreground" />
                       </div>
                       <div>
@@ -230,7 +230,7 @@ const ContactSection = () => {
               {/* Social Links */}
               <div className="floating-card p-8">
                 <h3 className="text-xl font-bold text-foreground mb-6">Connect With Me</h3>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   {socialLinks.map((social, index) => (
                     <a
@@ -254,7 +254,7 @@ const ContactSection = () => {
                   <h3 className="text-xl font-bold text-foreground">Availability Status</h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  Currently <span className="text-accent font-semibold">available</span> for new projects 
+                  Currently <span className="text-accent font-semibold">available</span> for new projects
                   and opportunities. Response time: Usually within 24 hours.
                 </p>
               </div>

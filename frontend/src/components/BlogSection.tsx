@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Calendar, ArrowRight, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -76,10 +77,13 @@ const BlogSection = () => {
           {!loading && !error && (
             <div className="space-y-8">
               {blogPosts.map((post, index) => (
-                <article 
+                <motion.article
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
                   key={post.id}
-                  className="floating-card p-8 group animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="floating-card p-8 group"
                 >
                   <div className="flex flex-col md:flex-row md:items-center gap-4 mb-4">
                     <div className="flex items-center space-x-4 text-sm text-muted-foreground">
@@ -108,7 +112,7 @@ const BlogSection = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag, tagIndex) => (
-                        <span 
+                        <span
                           key={tagIndex}
                           className="px-2 py-1 bg-muted/30 text-muted-foreground rounded text-sm font-mono"
                         >
@@ -119,10 +123,10 @@ const BlogSection = () => {
 
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button 
-                          variant="ghost" 
+                        <Button
+                          variant="ghost"
                           size="sm"
-                          className="text-primary hover:text-primary-dark group-hover:translate-x-1 transition-all"
+                          className="text-primary hover:bg-primary hover:text-primary-foreground group-hover:translate-x-1 transition-all"
                           onClick={() => setSelectedPost(post)}
                         >
                           Read More
@@ -146,7 +150,7 @@ const BlogSection = () => {
                           <p className="text-foreground leading-relaxed">{post.content}</p>
                           <div className="flex flex-wrap gap-2">
                             {post.tags.map((tag, tagIndex) => (
-                              <span 
+                              <span
                                 key={tagIndex}
                                 className="px-2 py-1 bg-muted/30 text-muted-foreground rounded text-sm font-mono"
                               >
@@ -158,7 +162,7 @@ const BlogSection = () => {
                       </DialogContent>
                     </Dialog>
                   </div>
-                </article>
+                </motion.article>
               ))}
             </div>
           )}
@@ -173,7 +177,7 @@ const BlogSection = () => {
                   Follow my journey in tech, security, and AI development
                 </p>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button className="tech-button">
                   Subscribe to Newsletter

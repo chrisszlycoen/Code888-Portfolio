@@ -2,35 +2,43 @@ import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Award } from 'lucide-react';
 
 const TimelineSection = () => {
-    const experiences = [
-        {
-            year: "2023 - Present",
-            title: "Senior Full Stack Developer",
-            company: "Tech Solutions Inc.",
-            description: "Leading development of enterprise-scale applications using React, Node.js, and Cloud Infrastructure.",
-            icon: Briefcase
-        },
-        {
-            year: "2021 - 2023",
-            title: "Cybersecurity Analyst",
-            company: "SecureNet Defense",
-            description: "Conducted penetration testing and security audits for financial institutions.",
-            icon: Award
-        },
-        {
-            year: "2019 - 2021",
-            title: "RWANDA CODING ACADEMY",
-            company: "Education",
-            description: "Specialized training in Software Engineering and Embedded Systems.",
-            icon: GraduationCap
-        }
-    ];
+const experiences = [
+    {
+        year: "2026 - Present",
+        title: "Mobile App & Game Developer",
+        company: "Personal Projects",
+        description: "Developing mobile apps using Flutter and exploring game development with Unity Engine. Building interactive, user-friendly applications and games while integrating secure and efficient code practices.",
+        icon: Briefcase
+    },
+    {
+        year: "2025 - Present",
+        title: "Full Stack & Cybersec Enthusiast",
+        company: "Personal Projects",
+        description: "Building secure web apps like SecureScholars and Ciphera using React, Node.js, MongoDB. Focused on authentication, authorization, and practical cybersecurity in projects.",
+        icon: Briefcase
+    },
+    {
+        year: "2024 - 2025",
+        title: "Ethical Hacker in Training",
+        company: "Personal Learning & Labs",
+        description: "Practiced penetration testing, network analysis with Wireshark, and system security on Kali Linux. Developed skills in secure coding and database security.",
+        icon: Award
+    },
+    {
+        year: "2024 - Present",
+        title: "Software Engineering Student",
+        company: "Rwanda Coding Academy",
+        description: "Learning Full Stack Development, C Programming, Data Structures, Databases, and Embedded Systems. Built projects integrating coding and security.",
+        icon: GraduationCap
+    }
+];
+
 
     return (
         <section id="experience" className="py-24 bg-background relative">
             <div className="container mx-auto px-6 max-w-4xl">
                 <div className="text-center mb-16">
-                    <h2 className="section-heading text-white">My Journey</h2>
+                    <h2 className="section-heading text-foreground">My Journey</h2>
                     <p className="text-muted-foreground">The path that led me here</p>
                 </div>
 
@@ -51,10 +59,10 @@ const TimelineSection = () => {
                             >
                                 {/* Content Side */}
                                 <div className="w-full md:w-5/12">
-                                    <div className="floating-card p-6 rounded-lg border border-white/5 hover:border-primary/50 transition-colors">
+                                    <div className="floating-card p-6 rounded-lg border border-border hover:border-primary/50 transition-colors">
                                         <span className="text-primary font-mono text-sm mb-2 block">{exp.year}</span>
-                                        <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
-                                        <p className="text-sm text-gray-400 mb-3">{exp.company}</p>
+                                        <h3 className="text-xl font-bold text-muted-foreground mb-1">{exp.title}</h3>
+                                        <p className="text-sm text-muted-foreground mb-3">{exp.company}</p>
                                         <p className="text-muted-foreground text-sm leading-relaxed">
                                             {exp.description}
                                         </p>

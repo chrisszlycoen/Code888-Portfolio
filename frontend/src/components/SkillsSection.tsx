@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Code, Database, Shield, Palette, Brain, Terminal } from 'lucide-react';
 
 interface Skill {
@@ -36,7 +37,7 @@ const SkillsSection = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL ='https://code888-portfolio-backend.onrender.com';
+  const API_URL = 'https://code888-portfolio-backend.onrender.com';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,14 +103,23 @@ const SkillsSection = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, categoryIndex) => {
               const Icon = iconMap[category.icon];
+              // Custom override for Terminal skills: Deep Grey in Light Mode, Primary in Dark Mode
+              const isTerminal = category.icon === 'Terminal';
+              const colorClass = isTerminal
+                ? 'bg-muted-foreground dark:bg-primary'
+                : getColorClass(category.color, 'bg');
+
               return (
-                <div 
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: categoryIndex * 0.1, duration: 0.5 }}
                   key={category.id}
-                  className="floating-card p-6 animate-fade-in-up"
-                  style={{ animationDelay: `${categoryIndex * 100}ms` }}
+                  className="floating-card p-6"
                 >
                   <div className="flex items-center mb-6">
-                    <div className={`w-12 h-12 ${getColorClass(category.color, 'bg')} rounded-lg flex items-center justify-center mr-4`}>
+                    <div className={`w-12 h-12 ${colorClass} rounded-lg flex items-center justify-center mr-4`}>
                       <Icon className="h-6 w-6 text-background" />
                     </div>
                     <h3 className="text-xl font-bold text-foreground">{category.title}</h3>
@@ -123,18 +133,18 @@ const SkillsSection = () => {
                           <span className="text-xs text-muted-foreground font-mono">{skill.level}%</span>
                         </div>
                         <div className="w-full bg-muted/30 rounded-full h-2">
-                          <div 
-                            className={`h-2 rounded-full ${getColorClass(category.color, 'bg')} transition-all duration-1000 ease-out`}
-                            style={{ 
-                              width: `${skill.level}%`,
-                              animationDelay: `${(categoryIndex * 100) + (skillIndex * 50)}ms`
-                            }}
-                          ></div>
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.5 + (skillIndex * 0.1) }}
+                            className={`h-2 rounded-full ${colorClass}`}
+                          ></motion.div>
                         </div>
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

@@ -55,7 +55,7 @@ const HeroSection = () => {
               <span>root@code888:~# ./init_portfolio.sh</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-tight">
               I Build <br />
               <span className="text-primary">
                 <TypewriterText text="Secure Systems." delay={500} />
@@ -71,13 +71,13 @@ const HeroSection = () => {
               <Button size="lg" className="tech-button h-14 text-lg">
                 <a href="#projects">View Projects</a>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 border-white/20 hover:bg-white/5 text-white" asChild>
+              <Button size="lg" variant="outline" className="h-14 px-8 border-primary/20 hover:bg-primary/5 text-foreground" asChild>
                 <a href="#contact">Contact Me</a>
               </Button>
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center gap-6 pt-8 border-t border-white/10">
+            <div className="flex items-center gap-6 pt-8 border-t border-border">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
@@ -124,7 +124,7 @@ const HeroSection = () => {
                   <span className="text-blue-500 mr-2">~</span>
                   <span>ls skills/</span>
                 </div>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-1 pl-4 text-primary">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1 pl-4 text-blue-400">
                   <span>react.js</span>
                   <span>node.js</span>
                   <span>typescript</span>

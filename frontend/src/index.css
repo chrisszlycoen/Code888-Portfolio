@@ -9,7 +9,50 @@
 
 @layer base {
   :root {
-    /* Backgrounds: Pure Black to Deep Graphite */
+    /* LIGHT MODE: Monochrome (Black, White, Grey) */
+    --background: 0 0% 100%;
+    /* #ffffff */
+    --surface: 0 0% 98%;
+    /* #fafafa */
+    --surface-elevated: 0 0% 100%;
+    /* #ffffff */
+    --foreground: 0 0% 0%;
+    /* #000000 */
+
+    /* Primary: Pure Black for high contrast actions */
+    --primary: 0 0% 0%;
+    /* #000000 */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Subtle Grey */
+    --secondary: 0 0% 96%;
+    /* #f5f5f5 */
+    --secondary-foreground: 0 0% 0%;
+
+    --accent: 0 0% 0%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Neutrals */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+    /* Balanced Dark Grey */
+    --border: 0 0% 85%;
+    /* Soft Grey border */
+    --input: 0 0% 85%;
+    --ring: 0 0% 0%;
+    /* Black focus ring */
+
+    /* Shadows - Clean & Sharp */
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-floating: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    --radius: 0rem;
+    --logo-text: 0 0% 0%;
+    /* Black Logo in Light Mode */
+  }
+
+  .dark {
+    /* DARK MODE: Deep, Tech, Immersive (Preserved) */
     --background: 0 0% 0%;
     /* #000000 */
     --surface: 220 10% 4%;
@@ -19,34 +62,31 @@
     --foreground: 0 0% 100%;
     /* #FFFFFF */
 
-    /* Primary: Electric Blue */
+    /* Primary: Electric Blue (Vibrant on black) */
     --primary: 220 90% 56%;
-    /* #3b82f6 Blue-500 equivalent but sharper */
+    /* #3b82f6 */
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary & Accents */
+    /* Secondary */
     --secondary: 220 15% 20%;
     /* Dark Grey Blue */
     --secondary-foreground: 0 0% 100%;
 
     --accent: 220 90% 56%;
-    /* Same as primary for consistency */
     --accent-foreground: 0 0% 100%;
 
     /* Neutrals */
     --muted: 220 10% 12%;
     --muted-foreground: 220 10% 65%;
-    /* Cool Grey */
     --border: 220 10% 12%;
     --input: 220 10% 12%;
     --ring: 220 90% 56%;
 
-    /* Shadows - Subtle & Deep (No Glows) */
+    /* Shadows - Deep */
     --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
     --shadow-floating: 0 10px 40px rgba(0, 0, 0, 0.8);
 
-    --radius: 0rem;
-    /* Sharp edges for hacker feel */
+    --logo-text: 220 90% 56%;
   }
 }
 
@@ -103,7 +143,7 @@
 
   /* Utility Classes - FLAT DESIGN */
   .section-heading {
-    @apply text-4xl md:text-5xl font-bold mb-6 text-white inline-block;
+    @apply text-4xl md:text-5xl font-bold mb-6 text-foreground inline-block;
   }
 
   .tech-button {
@@ -114,8 +154,9 @@
   }
 
   .tech-button:hover {
-    background-color: #2563eb;
-    /* Darker blue manually */
+    filter: brightness(1.2);
+    /* Brightens blue in dark mode, no effect on black? No. */
+    opacity: 0.9;
     transform: translateY(-2px);
   }
 
