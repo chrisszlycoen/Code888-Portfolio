@@ -1,69 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Modern developer portfolio design system with dark tech aesthetics */
+/* DESIGN SYSTEM - DEEP BLUE MINIMALIST */
+/* No Gradients. Pure Precision. */
 
 @layer base {
   :root {
-    /* Neon hacker theme */
+    /* Backgrounds: Pure Black to Deep Graphite */
     --background: 0 0% 0%;
-    --surface: 0 0% 5%;
-    --surface-elevated: 0 0% 8%;
+    /* #000000 */
+    --surface: 220 10% 4%;
+    /* #090A0D */
+    --surface-elevated: 220 10% 8%;
+    /* #121418 */
     --foreground: 0 0% 100%;
-    
-    /* Neon Blue primary palette */
-    --primary: 180 100% 50%;
-    --primary-glow: 180 100% 60%;
-    --primary-dark: 180 100% 40%;
-    --primary-foreground: 0 0% 0%;
-    
-    /* Magenta Pink secondary palette */
-    --secondary: 300 100% 50%;
-    --secondary-glow: 300 100% 60%;
+    /* #FFFFFF */
+
+    /* Primary: Electric Blue */
+    --primary: 220 90% 56%;
+    /* #3b82f6 Blue-500 equivalent but sharper */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary & Accents */
+    --secondary: 220 15% 20%;
+    /* Dark Grey Blue */
     --secondary-foreground: 0 0% 100%;
-    
-    /* Neon Green accent palette */
-    --accent: 108 100% 54%;
-    --accent-glow: 108 100% 64%;
-    --accent-foreground: 0 0% 0%;
-    
-    /* Neutral colors */
-    --muted: 215 15% 25%;
-    --muted-foreground: 217 10% 65%;
-    --border: 217 10% 20%;
-    --input: 217 10% 15%;
-    --ring: 197 100% 65%;
-    
-    /* Status colors */
-    --destructive: 0 75% 65%;
-    --destructive-foreground: 210 40% 95%;
-    
-    /* UI elements */
-    --card: 222 18% 11%;
-    --card-foreground: 210 40% 95%;
-    --popover: 222 16% 14%;
-    --popover-foreground: 210 40% 95%;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
-    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)) 0%, hsl(var(--background)) 100%);
-    
-    /* Shadows with glow effects */
-    --shadow-glow: 0 0 50px hsl(var(--primary) / 0.3);
-    --shadow-card: 0 8px 30px hsl(222 20% 4% / 0.6);
-    --shadow-floating: 0 20px 60px hsl(222 20% 4% / 0.8);
-    
-    /* Animation variables */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    --radius: 0.75rem;
+
+    --accent: 220 90% 56%;
+    /* Same as primary for consistency */
+    --accent-foreground: 0 0% 100%;
+
+    /* Neutrals */
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 10% 65%;
+    /* Cool Grey */
+    --border: 220 10% 12%;
+    --input: 220 10% 12%;
+    --ring: 220 90% 56%;
+
+    /* Shadows - Subtle & Deep (No Glows) */
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-floating: 0 10px 40px rgba(0, 0, 0, 0.8);
+
+    --radius: 0rem;
+    /* Sharp edges for hacker feel */
   }
 }
 
@@ -73,64 +56,78 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
-    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-family: 'Space Grotesk', sans-serif !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Outfit', sans-serif !important;
+    letter-spacing: -0.02em;
   }
 
   .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrains Mono', monospace !important;
   }
 
-  .gradient-text {
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  ::selection {
+    background-color: hsl(var(--primary));
+    color: white;
   }
 
-  .glow-effect {
-    box-shadow: var(--shadow-glow);
+  /* Lenis Scroll */
+  html.lenis,
+  html.lenis body {
+    height: auto;
   }
 
-  .hover-glow {
-    transition: var(--transition-smooth);
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
   }
 
-  .hover-glow:hover {
-    box-shadow: var(--shadow-glow);
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  /* Utility Classes - FLAT DESIGN */
+  .section-heading {
+    @apply text-4xl md:text-5xl font-bold mb-6 text-white inline-block;
+  }
+
+  .tech-button {
+    @apply relative overflow-hidden px-8 py-3 font-bold transition-all duration-300;
+    background-color: hsl(var(--primary));
+    color: white;
+    border: none;
+  }
+
+  .tech-button:hover {
+    background-color: #2563eb;
+    /* Darker blue manually */
     transform: translateY(-2px);
   }
 
   .floating-card {
-    background: hsl(var(--card));
+    background-color: hsl(var(--surface));
     border: 1px solid hsl(var(--border));
     box-shadow: var(--shadow-card);
-    transition: var(--transition-smooth);
+    transition: transform 0.3s ease, border-color 0.3s ease;
   }
 
   .floating-card:hover {
-    box-shadow: var(--shadow-floating);
-    transform: translateY(-4px);
-  }
-}
-
-@layer components {
-  .hero-text {
-    @apply text-5xl md:text-7xl font-bold leading-tight;
-  }
-
-  .section-heading {
-    @apply text-3xl md:text-4xl font-bold mb-8;
-  }
-
-  .tech-button {
-    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
-    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
-    @apply hover:from-primary-dark hover:to-primary;
-    @apply shadow-lg hover:shadow-xl hover:-translate-y-1;
-  }
-
-  .glass-effect {
-    @apply backdrop-blur-lg bg-surface/20 border border-border/20;
+    border-color: hsl(var(--primary));
+    transform: translateY(-5px);
   }
 }
