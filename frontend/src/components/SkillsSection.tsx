@@ -158,7 +158,10 @@ const SkillsSection = () => {
               <div className="grid md:grid-cols-3 gap-6 text-sm">
                 {learnings.map((learning) => (
                   <div key={learning.id} className="space-y-2">
-                    <h4 className={`font-semibold ${getColorClass(learning.category, 'text')}`}>
+                    <h4 className={`font-semibold ${learning.title.includes('Java')
+                        ? 'text-muted-foreground'
+                        : getColorClass(learning.category, 'text')
+                      }`}>
                       {learning.title}
                     </h4>
                     <p className="text-muted-foreground">{learning.description}</p>

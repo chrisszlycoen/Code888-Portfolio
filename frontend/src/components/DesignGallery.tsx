@@ -67,17 +67,17 @@ const DesignGallery = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${activeCategory === category
-                ? 'bg-gradient-primary text-primary-foreground shadow-glow'
-                : 'bg-surface hover:bg-surface-elevated text-muted-foreground hover:text-foreground'
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-none border transition-all duration-300 ${activeCategory === category
+                ? 'bg-primary text-white border-primary'
+                : 'bg-transparent text-muted-foreground border-border hover:border-primary/50 hover:text-primary'
                 }`}
             >
-              {category}
+              <span>{category}</span>
             </button>
           ))}
         </div>

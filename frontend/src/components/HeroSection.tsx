@@ -71,7 +71,7 @@ const HeroSection = () => {
               <Button size="lg" className="tech-button h-14 text-lg">
                 <a href="#projects">View Projects</a>
               </Button>
-              <Button size="lg" variant="outline" className="h-14 px-8 border-primary/20 hover:bg-primary/5 text-foreground" asChild>
+              <Button size="lg" variant="outline" className="h-14 px-8 border-primary/20 hover:bg-primary/5 hover:text-muted-foreground" asChild>
                 <a href="#contact">Contact Me</a>
               </Button>
             </div>
